@@ -61,11 +61,6 @@ function startGame(selectedDifficulty) {
     });
 }
 
-document.querySelectorAll("difficulty-buttons button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-        startGame(btn.dataset.difficulty);
-    });
-});
 
 function createDrop() {
     const drop = document.createElement("div");

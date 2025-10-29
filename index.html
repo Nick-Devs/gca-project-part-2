@@ -44,30 +44,39 @@
   </style>
 </head>
 <body>
-    <div id="menu">
-        <h1>Catch the Water</h1>
-        <p>Select Difficulty</p>
-        <div id="difficulty-buttons">
-            <button data-difficulty="easy">Easy</button>
-            <button data-difficulty="normal">Normal</button>
-            <button data-difficulty="hard">Hard</button>
+    <body>
+        <div id="menu">
+            <div id="difficulty-buttons">
+                <button data-difficulty="easy">Easy</button>
+                <button data-difficulty="normal">Normal</button>
+                <button data-difficulty="hard">Hard</button>
+            </div>
         </div>
-    </div>
 
-    <div id="countdown" class="hidden"></div>
+        <script>
+            console.log("Script loaded!");
 
-    <div id="game">
-        <img id="gameLogo" src="./images/logo.jpg" alt="Catch the Water Logo" />
+            document.querySelectorAll("#difficulty-buttons button").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    console.log("Button clicked:", btn.dataset.difficulty);
+                });
+            });
+        </script>
 
-        <div id="score">Score: 0</div>
-        <div id="bucket"></div>
-    </div>
+        <div id="countdown" class="hidden"></div>
 
-    <footer>
-        <a href="https://www.charitywater.org/" target="_blank">charity: water</a> |
-        <a href="https://www.charitywater.org/donate" target="_blank">Donate</a>
-    </footer>
+        <div id="game">
+            <img id="gameLogo" src="./images/logo.jpg" alt="Catch the Water Logo" />
 
-    <script src="script.js"></script>
-</body>
+            <div id="score">Score: 0</div>
+            <div id="bucket"></div>
+        </div>
+
+        <footer>
+            <a href="https://www.charitywater.org/" target="_blank">charity: water</a> |
+            <a href="https://www.charitywater.org/donate" target="_blank">Donate</a>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
 </html>
