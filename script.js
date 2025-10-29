@@ -14,37 +14,12 @@ let baseDropInterval = 5000;
 let dropInterval = baseDropInterval;
 let difficulty = "normal";
 
-function startCountdown(callback) {
-    let count = 3;
-    countdownEl.textContent = count;
-    countdownEl.classList.remove("hidden");
-    countdownEl.style.opacity = "1";
-
-    const interval = setInterval(() => {
-        count--;
-        if (count > 0) {
-            countdownEl.textContent = count;
-        } else {
-            countdownEl.textContent = "GO!";
-            setTimeout(() => {
-                countdownEl.style.opacity = "0";
-                setTimeout(() => {
-                    countdownEl.classList.add("hidden");
-                    countdownEl.style.opacity = "1"; 
-                    callback();
-                }, 500);
-            }, 800);
-            clearInterval(interval);
-        }
-    }, 1000);
-}
-
 
 function startGame(selectedDifficulty) {
     difficulty = selectedDifficulty;
 
     menu.classList.remove("hidden");
-    menu.classList.add("fade-out");
+    //menu.classList.add("fade-out");
 
     setTimeout(() => {
         menu.classList.add("hidden");
@@ -68,15 +43,6 @@ function startGame(selectedDifficulty) {
                 break;
         }
         dropInterval = baseDropInterval;
-
-        startCountdown(() => {
-            game.classList.remove("fade-in");
-            game.style.opacity = "1";
-
-            menu.classList.add("hidden");
-
-            requestAnimationFrame(gameLoop);
-        });
     }, 600);
 }
 
