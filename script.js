@@ -2,7 +2,7 @@ const game = document.getElementById("game");
 const bucket = document.getElementById("bucket");
 const scoreDisplay = document.getElementById("score");
 const menu = document.getElementById("menu");
-const countdownEl = document.getElementById("countdown");
+//const countdownEl = document.getElementById("countdown");
 
 let score = 0;
 let bucketX = window.innerWidth / 2;
@@ -17,33 +17,26 @@ let difficulty = "normal";
 
 function startGame(selectedDifficulty) {
     difficulty = selectedDifficulty;
+    const menu = document.getElementById('menu');
+    menu.remove(); 
 
-    menu.classList.remove("hidden");
-    //menu.classList.add("fade-out");
-
-    setTimeout(() => {
-        menu.classList.add("hidden");
-        menu.classList.remove("fade-out");
-
-        game.classList.remove("hidden");
-        game.classList.add("fade-in");
-
-        switch (difficulty) {
-            case "easy":
-                baseDropInterval = 7500;
-                dropSpeed = 0.8;
-                break;
-            case "hard":
-                baseDropInterval = 3500;
-                dropSpeed = 1.5;
-                break;
-            default:
-                baseDropInterval = 5000;
-                dropSpeed = 1;
-                break;
-        }
-        dropInterval = baseDropInterval;
-    }, 600);
+    switch (difficulty) {
+        case "easy":
+            baseDropInterval = 7500;
+            dropSpeed = 0.8;
+            break;
+        case "hard":
+            baseDropInterval = 3500;
+            dropSpeed = 1.5;
+            break;
+        default:
+            baseDropInterval = 5000;
+            dropSpeed = 1;
+            break;
+    }
+    dropInterval = baseDropInterval;
+    gameLoop();
+    }
 }
 
 
