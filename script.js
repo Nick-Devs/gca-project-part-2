@@ -2,7 +2,6 @@ const game = document.getElementById("game");
 const bucket = document.getElementById("bucket");
 const scoreDisplay = document.getElementById("score");
 const menu = document.getElementById("menu");
-//const countdownEl = document.getElementById("countdown");
 
 let score = 0;
 let bucketX = window.innerWidth / 2;
@@ -25,7 +24,8 @@ function startGame(selectedDifficulty) {
     difficulty = selectedDifficulty;
     const menu = document.getElementById('menu');
     menu.style.opacity = 0;
-    setTimeout(() => menu.remove(), 500);
+    menu.remove();
+    game.style.opacity = 1;
 
     switch (difficulty) {
         case "easy":
@@ -87,6 +87,13 @@ function updateDrops() {
             game.removeChild(drop);
             drops.splice(i, 1);
         }
+
+        for (let milestone of milestones) {
+            if (score >= milestone.score && !milestonesReached.has(milestone.score)) {
+                showMilestoneMessage(milestone.message);
+                milestonesReached.add(milestone.score);
+            }
+        }
     }
 }
 
@@ -138,3 +145,22 @@ window.addEventListener("resize", () => {
 });
 
 window.addEventListener("keydown", moveBucket);
+
+const milestones = [
+    { score: 10, message: "Nice" },
+    { score: 20, message: "Keep it up!" },
+    { score: 50, message: "You're on fire!" },
+    { score: 100, message: "Unstoppable!" }
+];
+
+let milestonesReached = new Set();
+
+
+function showMilestoneMessage(msg) {
+    const milestoneDiv = document.createElement("div");
+    milestoneDiv.className = "milestone-message";
+    milestoneDiv.textContent = msg;
+    document.body.appendChild(milestoneDiv);
+
+    setTimeout(() => milestoneDiv.remove(), 2000);
+}
