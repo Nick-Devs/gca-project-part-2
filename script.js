@@ -30,6 +30,7 @@ function startCountdown(callback) {
                 countdownEl.style.opacity = "0";
                 setTimeout(() => {
                     countdownEl.classList.add("hidden");
+                    countdownEl.style.opacity = "1"; 
                     callback();
                 }, 500);
             }, 800);
@@ -38,9 +39,11 @@ function startCountdown(callback) {
     }, 1000);
 }
 
+
 function startGame(selectedDifficulty) {
     difficulty = selectedDifficulty;
 
+    menu.classList.remove("hidden");
     menu.classList.add("fade-out");
 
     setTimeout(() => {
@@ -64,16 +67,19 @@ function startGame(selectedDifficulty) {
                 dropSpeed = 1;
                 break;
         }
-
         dropInterval = baseDropInterval;
 
         startCountdown(() => {
             game.classList.remove("fade-in");
+            game.style.opacity = "1";
+
+            menu.classList.add("hidden");
+
             requestAnimationFrame(gameLoop);
         });
-
-    }, 600); 
+    }, 600);
 }
+
 
 function createDrop() {
     const drop = document.createElement("div");
