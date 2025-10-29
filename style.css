@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #b3d9ff;
+  font-family: Arial, sans-serif;
+  touch-action: none; 
+  user-select: none;  
+}
+
+#game {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to top, #5cb85c 10%, #b3d9ff 90%);
+}
+
+#score {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffa500;
+}
+
+#bucket {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  background: gray;
+  border-radius: 10px 10px 0 0;
+}
+
+#bucket, .drop {
+  transition: left 0.1s ease;
+}
+
+.drop {
+  position: absolute;
+  width: 45px;
+  height: 75px;
+  background: #00aaff;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+@import url('https://fonts.cdnfonts.com/css/proxima-nova');
+
+footer {
+  text-align: center;
+  padding: 15px 0;
+  background-color: #f5f5f5;
+  border-top: 2px solid #ddd;
+  font-family: 'Proxima Nova', sans-serif;
+  font-style: italic;
+  font-weight: 700; /* Bold */
+  color: #333;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer a {
+  color: #00aaff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to top, #5cb85c 10%, #b3d9ff 90%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Proxima Nova", sans-serif;
+    color: #004466;
+    text-align: center;
+    z-index: 20;
+}
+
+    #menu h1 {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+
+    #menu p {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+#difficulty-buttons button {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: #00aaff;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    #difficulty-buttons button:hover {
+        background-color: #0077cc;
+    }
+
+#countdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 120px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
