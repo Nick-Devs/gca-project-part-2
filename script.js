@@ -14,6 +14,11 @@ let baseDropInterval = 5000;
 let dropInterval = baseDropInterval;
 let difficulty = "normal";
 
+document.querySelectorAll("#difficulty-buttons button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        console.log("Button clicked:", btn.dataset.difficulty);
+        startGame(btn.dataset.difficulty);
+    }
 
 function startGame(selectedDifficulty) {
     difficulty = selectedDifficulty;
