@@ -18,6 +18,7 @@ function startCountdown(callback) {
     let count = 3;
     countdownEl.textContent = count;
     countdownEl.classList.remove("hidden");
+    countdownEl.style.opacity = "1";
 
     const interval = setInterval(() => {
         count--;
@@ -26,8 +27,11 @@ function startCountdown(callback) {
         } else {
             countdownEl.textContent = "GO!";
             setTimeout(() => {
-                countdownEl.classList.add("hidden");
-                callback();
+                countdownEl.style.opacity = "0";
+                setTimeout(() => {
+                    countdownEl.classList.add("hidden");
+                    callback();
+                }, 500);
             }, 800);
             clearInterval(interval);
         }
@@ -36,31 +40,40 @@ function startCountdown(callback) {
 
 function startGame(selectedDifficulty) {
     difficulty = selectedDifficulty;
-    menu.classList.add("hidden");
 
-    switch (difficulty) {
-        case "easy":
-            baseDropInterval = 7500;
-            dropSpeed = 0.8;
-            break;
-        case "hard":
-            baseDropInterval = 3500;
-            dropSpeed = 1.5;
-            break;
-        default:
-            baseDropInterval = 5000;
-            dropSpeed = 1;
-            break;
-    }
+    menu.classList.add("fade-out");
 
-    dropInterval = baseDropInterval;
+    setTimeout(() => {
+        menu.classList.add("hidden");
+        menu.classList.remove("fade-out");
 
-    startCountdown(() => {
         game.classList.remove("hidden");
-        requestAnimationFrame(gameLoop);
-    });
-}
+        game.classList.add("fade-in");
 
+        switch (difficulty) {
+            case "easy":
+                baseDropInterval = 7500;
+                dropSpeed = 0.8;
+                break;
+            case "hard":
+                baseDropInterval = 3500;
+                dropSpeed = 1.5;
+                break;
+            default:
+                baseDropInterval = 5000;
+                dropSpeed = 1;
+                break;
+        }
+
+        dropInterval = baseDropInterval;
+
+        startCountdown(() => {
+            game.classList.remove("fade-in");
+            requestAnimationFrame(gameLoop);
+        });
+
+    }, 600); 
+}
 
 function createDrop() {
     const drop = document.createElement("div");

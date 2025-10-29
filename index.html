@@ -43,7 +43,6 @@
   }
   </style>
 </head>
-<body>
     <body>
         <div id="menu">
             <div id="difficulty-buttons">
@@ -59,6 +58,7 @@
             document.querySelectorAll("#difficulty-buttons button").forEach((btn) => {
                 btn.addEventListener("click", () => {
                     console.log("Button clicked:", btn.dataset.difficulty);
+                    startGame(btn.dataset.difficulty);
                 });
             });
         </script>
