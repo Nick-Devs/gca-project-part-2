@@ -24,7 +24,8 @@ document.querySelectorAll("#difficulty-buttons button").forEach((btn) => {
 function startGame(selectedDifficulty) {
     difficulty = selectedDifficulty;
     const menu = document.getElementById('menu');
-    menu.remove(); 
+    menu.style.opacity = 0;
+    setTimeout(() => menu.remove(), 500);
 
     switch (difficulty) {
         case "easy":
