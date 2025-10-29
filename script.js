@@ -18,7 +18,8 @@ document.querySelectorAll("#difficulty-buttons button").forEach((btn) => {
     btn.addEventListener("click", () => {
         console.log("Button clicked:", btn.dataset.difficulty);
         startGame(btn.dataset.difficulty);
-    }
+    });
+});
 
 function startGame(selectedDifficulty) {
     difficulty = selectedDifficulty;
@@ -41,9 +42,7 @@ function startGame(selectedDifficulty) {
     }
     dropInterval = baseDropInterval;
     gameLoop();
-    }
 }
-
 
 function createDrop() {
     const drop = document.createElement("div");
